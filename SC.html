@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shp.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <section>
+        <div class="cart">
+            <div class="cart-item">
+                <div class="row center">
+                    <div class="col center">
+                        <img src="images/product-1.png" alt="">
+                        <h4>iPhone 11 128GB Black</h4>
+                    </div>
+                    <div class="col center">
+                        <div class="newcol center">
+                            <button onclick="Boss('phone',false)" class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <input id="phoneinput" type="text" class="form-control text-center" value="1">
+                            <button onclick="Boss('phone',true)" class="btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="image center">
+                            <h5>$ <span id="phonepots">1219</span></h5>
+                            <img src="images/remove.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="row center">
+                    <div class="col center">
+                        <img src="images/product-2.png" alt="">
+                        <h4>iPhone 11 Silicone Case - Black</h4>
+                    </div>
+                    <div class="col center">
+                        <div class="newcol center">
+                            <button onclick="Boss('case',false)" class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <input id="caseinput" type="text" class="form-control text-center" value="1">
+                            <button onclick="Boss('case',true)" class="btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="image center">
+                            <h5>$ <span id="casepots">59</span></h5>
+                            <img src="images/remove.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="row center">
+
+                    <div class="col-1">
+                        <h4>Subtotals:</h4>
+                        <h4>Tax:</h4>
+                        <h4>Total:</h4>
+                    </div>
+
+                    <div class="col-2 top">
+                        <h4>$ <span id="total">1278</span></h4>
+                        <h4>$0</h4>
+                        <h4>$ <span id="LT">1278</span> </h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btnclass">
+                <button id="last" class="btn btn-success newbtn">Check Out</button>
+            </div>
+
+        </div>
+        </div>
+
+    </section>
+    <script>
+        //Minus Part Iphone
+        // const IP = document.getElementById("ibdm");
+        // IP.addEventListener("click", function () {
+
+
+        //     CBossN("input", "pot");
+        // })
+
+        // //Positive Part Iphone
+        // const pos = document.getElementById("ibdp");
+        // pos.addEventListener("click", function () {
+
+        //     CBossP("input", "pot");
+        // })
+
+        // //Minus Part Case
+        // const Minus = document.getElementById("cbdm");
+        // Minus.addEventListener("click", function () {
+
+        //     CBossN("inputs", "pots");
+        // })
+        
+
+        // //Positive Part Case
+        // const Tank = document.getElementById("cbdp");
+        // Tank.addEventListener("click", function () {
+        //     // const min = Bank("inputs");
+        //     CBossP("inputs", "pots");
+        // })
+       
+
+        function Boss(mao,id) {
+            const tip = document.getElementById(mao+"input");
+            const top = parseFloat(tip.value);
+             let tank = top;
+            if (id == true) {
+                tank=top+1;
+            }
+            if (id == false && tank>1) {
+                tank=top-1;
+            }
+            tip.value = tank;
+            if(mao=='case'){
+              document.getElementById(mao+"pots").innerText = tank * 59;  
+            }
+           if(mao=='phone'){
+               document.getElementById(mao+"pots").innerText=tank*1219;
+           } 
+
+        }
+        // function PBoss(id){
+        //     const tip=document.getElementById("inputs");
+        //     const top=parseFloat(tip.value);
+        //     let cut=top;
+        //     if(id==true){
+        //         cut=top+1;
+        //     }
+        //     if(id==false && cut>1){
+        //         cut=top-1;
+        //     }
+        //     tip.value=cut;
+        //     document.getElementById("pot").innerText=cut*1219;
+        // }
+
+
+        // function CBossN(product, id) {
+        //     // const terms = document.getElementById(id).innerText;
+        //     // const man = parseFloat(terms);
+
+        //     const tek = document.getElementById(product).value;
+        //     const val = parseFloat(tek);
+        //     if (product == "inputs" && val != '1') {
+        //         // if (59 < man) {
+        //         //     document.getElementById(id).innerText = man - 59;
+        //         // }
+
+
+        //         const decrease = document.getElementById(product).value = val - 1;
+        //         document.getElementById(product).value = val - 1;
+        //         document.getElementById(id).innerText = decrease * 59;
+
+        //     }
+        //     if (product == "input" && val != '1') {
+        //         // if (1219 < man) {
+        //         //     document.getElementById(id).innerText = man - 1219;
+        //         // }
+        //         const tek = document.getElementById("input").value;
+        //         const val = parseFloat(tek);
+
+        //         const increase = document.getElementById(product).value = val - 1;
+        //         document.getElementById(product).value = val - 1;
+        //         document.getElementById(id).innerText = increase * 1219;
+
+        //     }
+
+        // }
+
+
+        // function CBossP(product, id) {
+        //     // const bad = document.getElementById(id).innerText;
+        //     // const man = parseFloat(bad);
+
+        //     const tek = document.getElementById(product).value;
+        //     const val = parseFloat(tek);
+
+        //     // document.getElementById(id).innerText = apple * 59;
+        //     if (product == "input") {
+
+
+        //         const apple = document.getElementById(product).value = val + 1;
+        //         document.getElementById(product).value = val + 1;
+
+        //         document.getElementById(id).innerText = apple * 1219;
+        //     }
+        //     if (product == "inputs") {
+        //         const tek = document.getElementById("inputs").value;
+        //         const val = parseFloat(tek);
+
+        //         const apple = document.getElementById(product).value = val + 1;
+        //         document.getElementById(product).value = val + 1;
+        //         document.getElementById(id).innerText = apple * 59;
+        //     }
+        // }
+
+
+        // function BossP(id, val) {
+        //     const top = document.getElementById(id).innerText;
+        //     const Man = parseFloat(top);
+        //     const orange= document.getElementById("input").value = val + 1;
+        //     document.getElementById("input").value = val + 1;
+        //     document.getElementById(id).innerText = orange*1219;
+
+        // }
+        // function BossN(id, val) {
+        //     const top = document.getElementById(id).innerText;
+        //     const Man = parseFloat(top);
+        //     if (1219 < Man) {
+        //         document.getElementById(id).innerText = Man - 1219;
+        //     }
+
+        //     if (val != '1') {
+        //         document.getElementById("input").value = val - 1;
+        //     }
+        // }
+
+        const Last = document.getElementById("last");
+        Last.addEventListener("click", function () {
+            const a = document.getElementById("phonepots").innerText;
+            const b = parseFloat(a);
+            const c = document.getElementById("casepots").innerText;
+            const d = parseFloat(c);
+            document.getElementById("total").innerText = b + d;
+            document.getElementById("LT").innerText = b + d;
+        })
+
+    </script>
+</body>
+
+</html>
